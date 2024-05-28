@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dueokqci75ewe"]
+
+[ext_resource type="Script" path="res://floors/level.gd" id="1_wstjj"]
+[ext_resource type="PackedScene" uid="uid://l7iqckuwewwv" path="res://tiles/room/room.tscn" id="2_eklpx"]
+[ext_resource type="PackedScene" uid="uid://36ern3emwmal" path="res://tiles/empty/empty.tscn" id="3_cx81l"]
+[ext_resource type="PackedScene" uid="uid://baqw5tkodyqbw" path="res://characters/playable/character.tscn" id="5_5c8cg"]
+[ext_resource type="PackedScene" uid="uid://br6bpi3a4puuf" path="res://gui/minimap/minimap.tscn" id="5_7mff4"]
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_wstjj")
+room = ExtResource("2_eklpx")
+empty = ExtResource("3_cx81l")
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(2, 2)
+anchor_mode = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="minimap" parent="camera" instance=ExtResource("5_7mff4")]
+
+[node name="tile(0, 0)" parent="." instance=ExtResource("2_eklpx")]
+
+[node name="character" parent="." instance=ExtResource("5_5c8cg")]
+position = Vector2(288, 280)

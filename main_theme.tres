@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bfx22ncfxj1sh"]
+
+[ext_resource type="FontFile" uid="uid://bo17px4qca1h2" path="res://Axolotl.ttf" id="1_nyq8j"]
+
+[sub_resource type="FontVariation" id="FontVariation_thf1s"]
+base_font = ExtResource("1_nyq8j")
+
+[sub_resource type="FontVariation" id="FontVariation_ivbie"]
+base_font = ExtResource("1_nyq8j")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lklrp"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.678431)
+expand_margin_left = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcba1"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 0.466667)
+expand_margin_left = 2.0
+
+[sub_resource type="FontVariation" id="FontVariation_o0wmh"]
+base_font = ExtResource("1_nyq8j")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nojqy"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.486275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yikbh"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.486275)
+
+[resource]
+Label/font_sizes/font_size = 24
+Label/fonts/font = SubResource("FontVariation_thf1s")
+LineEdit/font_sizes/font_size = 24
+LineEdit/fonts/font = SubResource("FontVariation_ivbie")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_lklrp")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_wcba1")
+TextEdit/font_sizes/font_size = 24
+TextEdit/fonts/font = SubResource("FontVariation_o0wmh")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_nojqy")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_yikbh")
