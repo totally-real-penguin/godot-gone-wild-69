@@ -9,26 +9,22 @@ var neighbours : Array = [
 	null, #down
 	null] #left
 
-func set_color():
-	if distance != 0:
-		if distance >= 20:
-			$bg_color.color = Color.from_hsv(0.0,1.0,1.0)
-		else:
-			color = ((140.0 - (7 * distance)) / 360.0)
-			$bg_color.color = Color.from_hsv(color,1.0,1.0)
-
 func open_doors():
 	for i in range(0,4):
 		if neighbours[i] != null:
 			if neighbours[i].is_in_group("room"):
 				if i == 0:
 					$door_up/collision.set_deferred("disabled", true)
+					$door_up/door_sprite.visible = false
 				if i == 1:
 					$door_right/collision.set_deferred("disabled", true)
+					$door_right/door_sprite.visible = false
 				if i == 2:
 					$door_down/collision.set_deferred("disabled",true)
+					$door_down/door_sprite.visible = false
 				if i == 3:
 					$door_left/collision.set_deferred("disabled",true)
+					$door_left/door_sprite.visible = false
 
 
 func _on_room_area_body_entered(body):

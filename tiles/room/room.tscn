@@ -1,6 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://l7iqckuwewwv"]
+[gd_scene load_steps=15 format=3 uid="uid://l7iqckuwewwv"]
 
 [ext_resource type="Script" path="res://tiles/room/room.gd" id="1_o0wdy"]
+[ext_resource type="Texture2D" uid="uid://csqbkiafnog8k" path="res://tiles/room/background.png" id="2_vh4w7"]
+[ext_resource type="Texture2D" uid="uid://bqy4nkwpxfwov" path="res://tiles/room/door_1.png" id="3_7p0pq"]
+[ext_resource type="Texture2D" uid="uid://d4fw6evlmftkp" path="res://tiles/room/door_2.png" id="4_17ux4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mr0w6"]
 size = Vector2(224, 32)
@@ -35,14 +38,9 @@ size = Vector2(576, 496)
 [node name="room" type="Node2D" groups=["room"]]
 script = ExtResource("1_o0wdy")
 
-[node name="bg_color" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 640.0
-offset_bottom = 560.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="bg_color" type="Sprite2D" parent="."]
+texture = ExtResource("2_vh4w7")
+centered = false
 
 [node name="walls" type="StaticBody2D" parent="."]
 
@@ -84,11 +82,17 @@ position = Vector2(320, 16)
 [node name="collision" type="CollisionShape2D" parent="door_up"]
 shape = SubResource("RectangleShape2D_mn652")
 
+[node name="door_sprite" type="Sprite2D" parent="door_up"]
+texture = ExtResource("3_7p0pq")
+
 [node name="door_down" type="StaticBody2D" parent="."]
 position = Vector2(320, 544)
 
 [node name="collision" type="CollisionShape2D" parent="door_down"]
 shape = SubResource("RectangleShape2D_mn652")
+
+[node name="door_sprite" type="Sprite2D" parent="door_down"]
+texture = ExtResource("3_7p0pq")
 
 [node name="door_right" type="StaticBody2D" parent="."]
 position = Vector2(624, 279)
@@ -97,11 +101,19 @@ position = Vector2(624, 279)
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_lkr7v")
 
+[node name="door_sprite" type="Sprite2D" parent="door_right"]
+position = Vector2(0, 1)
+texture = ExtResource("4_17ux4")
+
 [node name="door_left" type="StaticBody2D" parent="."]
 
 [node name="collision" type="CollisionShape2D" parent="door_left"]
 position = Vector2(16, 280)
 shape = SubResource("RectangleShape2D_hcfm1")
+
+[node name="door_sprite" type="Sprite2D" parent="door_left"]
+position = Vector2(16, 280)
+texture = ExtResource("4_17ux4")
 
 [node name="room_area" type="Area2D" parent="."]
 position = Vector2(320, 280)

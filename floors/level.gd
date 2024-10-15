@@ -23,7 +23,7 @@ func generate_rooms(rooms_required):
 		current_room.neighbours = check_neighbours(current_room)
 		var available_directions : Array = []
 		var num_directions : int = 0
-		
+
 		for i in range(0,4):
 			if current_room.neighbours[i] == null:
 				available_directions.append(true)
@@ -37,16 +37,16 @@ func generate_rooms(rooms_required):
 			print(current_room.name + " has no space to go")
 			room_queue.pop_front()
 			continue
-		
+
 		var new_rooms : int = new_rooms_weight(num_directions,current_room.distance,room_weights)
-		
+
 		for i in range(0,new_rooms):
 			var room_direction : int = rng.randi_range(1,(num_directions))
 			if rooms_generated < rooms_required:
 				for j in range(0,4):
 					if available_directions[j] == true:
 						room_direction -= 1
-						
+
 					if room_direction == 0:
 						var new_tile : Node = create_tile(current_room,j,room)
 						add_child(new_tile)
@@ -70,20 +70,20 @@ func create_tile(c_room:Node, direction:int, tile:PackedScene) -> Node:
 		Vector2i(grid_pos.x + 1,grid_pos.y), #Right
 		Vector2i(grid_pos.x, grid_pos.y +1), #Down
 		Vector2i(grid_pos.x - 1 ,grid_pos.y)] #Left
-	
+
 	tile_instance.grid_pos = tile_positions[direction]
 	tile_instance.position.x = tile_instance.grid_pos.x * room_size.x
 	tile_instance.position.y = tile_instance.grid_pos.y * room_size.y
 	tile_instance.distance = current_room.distance + 1
 	tile_instance.name = "tile" + str(tile_instance.grid_pos)
-	
-	
+
+
 	if tile == room:
 		var hue = ((140.0 - (7 * tile_instance.distance)) / 360.0)
 		$camera/minimap.create_minimap_tile(tile_instance.grid_pos, Color.from_hsv(hue,1,1))
 	else:
 		$camera/minimap.create_minimap_tile(tile_instance.grid_pos, Color.from_hsv(0,0,0))
-	
+
 	return tile_instance
 
 func check_neighbours(c_room:Node) -> Array:
@@ -101,19 +101,19 @@ func check_neighbours(c_room:Node) -> Array:
 func new_rooms_weight(directions:int, distance:int, weights:Array) -> int:
 	if distance >= weights[0]:
 		return 1
-	
+
 	elif distance >= weights[1]:
 		if directions < 2:
 			return rng.randi_range(1,directions)
 		else:
 			return rng.randi_range(1,2)
-	
+
 	elif distance >= weights[2]:
 		if directions < 3:
 			return rng.randi_range(1,directions)
 		else:
 			return rng.randi_range(1,3)
-	
+
 	elif distance == 0:
 		return rng.randi_range(2,4)
 	else:
